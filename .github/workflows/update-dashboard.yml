@@ -1,8 +1,5 @@
 name: Actualizar Dashboard Xolos
 
-on:
-  workflow_dispatch:
-  schedule:
     on:
   workflow_dispatch:
   schedule:
