@@ -1665,7 +1665,6 @@ SOFASCORE_MANUAL = {
         "GLS": 0,
         "AST": 1,
     },
-}
 
 
 def clave_sofascore_manual(nombre):
