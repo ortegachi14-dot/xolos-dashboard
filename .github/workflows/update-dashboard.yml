@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-dashboard:
@@ -29,6 +31,16 @@ jobs:
       - name: Generar dashboard
         run: |
           python update_dashboard.py
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar sitio para GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar en GitHub Pages
+        uses: actions/deploy-pages@v4
 
       - name: Guardar dashboard actualizado
         run: |
