@@ -1655,7 +1655,7 @@ SOFASCORE_MANUAL = {
     "Domingo Blanco": {
         "MP": 7,
         "MIN": 218,
-        "GLS": 0,
+        "GLS": 1,
         "AST": 0,
     },
 
