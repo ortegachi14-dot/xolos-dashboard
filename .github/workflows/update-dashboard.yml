@@ -26,7 +26,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-           - name: Guardar dashboard actualizado
+      - name: Generar dashboard
+        run: |
+          python update_dashboard.py
+
+      - name: Guardar dashboard actualizado
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
