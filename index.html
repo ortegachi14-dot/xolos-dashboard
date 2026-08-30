@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<title>Xoloitzcuintles — Jugadores Prestados</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    color: #ffffff;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    background-color: #080808;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("https://upload.wikimedia.org/wikipedia/commons/7/7f/Xolos_estadio_caliente.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+}
+
+.page {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 34px 28px 32px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.kicker {
+    color: #e30613;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: .95;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+}
+
+.season {
+    display: inline-block;
+    margin-top: 13px;
+    padding-top: 9px;
+    border-top: 2px solid #e30613;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.season strong {
+    color: #e30613;
+}
+
+/* PESTAÑAS */
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto 22px;
+}
+
+.tab {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,.22);
+    background: rgba(0,0,0,.55);
+    color: rgba(255,255,255,.72);
+    border-radius: 8px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 850;
+    letter-spacing: .4px;
+    cursor: pointer;
+}
+
+.tab.active {
+    color: #ffffff;
+    background: #e30613;
+    border-color: #e30613;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+.section-label {
+    text-align: center;
+    color: rgba(255,255,255,.78);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    margin: -6px 0 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(28, 28, 28, .91),
+            rgba(8, 8, 8, .88)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .20);
+
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, .38);
+
+    backdrop-filter: blur(4px);
+}
+
+.player-top {
+    min-height: 122px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 14px;
+    position: relative;
+}
+
+.foto {
+    width: 82px;
+    height: 82px;
+    flex: 0 0 82px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    background: #eeeeee;
+    border: 3px solid #ffffff;
+}
+
+.sin-foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e30613;
+    font-size: 28px;
+}
+
+.source-badge {
+    display: inline-block;
+    color: #e30613;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .7px;
+    margin-bottom: 4px;
+}
+
+.player-name {
+    font-size: 18px;
+    line-height: 1.12;
+    font-weight: 850;
+    padding-right: 24px;
+}
+
+.competition {
+    color: rgba(255,255,255,.58);
+    font-size: 10px;
+    line-height: 1.25;
+    margin-top: 5px;
+    padding-right: 24px;
+}
+
+.open-link {
+    position: absolute;
+    top: 16px;
+    right: 15px;
+    color: #e30613;
+    text-decoration: none;
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns:
+        repeat(7, 1fr);
+    border-top:
+        1px solid
+        rgba(255, 255, 255, .18);
+    padding: 10px 9px 13px;
+}
+
+.stats-secondary {
+    grid-template-columns:
+        repeat(4, 1fr);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    color: #e30613;
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: .5px;
+}
+
+.stat-value {
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 850;
+}
+
+.footer {
+    margin-top: 26px;
+    text-align: center;
+    color: rgba(255,255,255,.72);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.footer strong {
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+
+    .page {
+        padding: 24px 16px 28px;
+    }
+
+    .grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .player-name {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 560px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="header">
+
+    <div class="kicker">
+        XOLOITZCUINTLES
+    </div>
+
+    <h1 class="title">
+        Jugadores Prestados
+    </h1>
+
+    <div class="season">
+        Temporada
+        <strong>2026/2027</strong>
+    </div>
+
+</header>
+
+
+<nav class="tabs">
+
+    <button
+        class="tab active"
+        onclick="mostrarPestana('expansion', this)">
+        EXPANSIÓN / PREMIER
+    </button>
+
+    <button
+        class="tab"
+        onclick="mostrarPestana('otros', this)">
+        OTROS PRÉSTAMOS
+    </button>
+
+</nav>
+
+
+<section
+    id="expansion"
+    class="panel active">
+
+    <div class="section-label">
+        Apertura 2026 · Liga Expansión MX / Liga Premier
+    </div>
+
+    <main class="grid">
+        
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/01_jes_s_hern_ndez_moreno.jpg" alt="Jesús Hernández Moreno" loading="lazy">
+
+            <div class="player-name">
+                Jesús Hernández Moreno
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/124277/eyJpZENsdWIiOiAxMjA1OH0=/jesus-hernandez-moreno"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">5</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">265</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">3</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">2</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/02_ram_n_eligio_palomares_verdugo.jpg" alt="Ramón Eligio Palomares Verdugo" loading="lazy">
+
+            <div class="player-name">
+                Ramón Eligio Palomares Verdugo
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/125435/eyJpZENsdWIiOiAxNDI2Nn0=/ramon-eligio-palomares-verdugo"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">5</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">207</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">2</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/03_eduardo_ochoa_chaparro.jpg" alt="Eduardo Ochoa Chaparro" loading="lazy">
+
+            <div class="player-name">
+                Eduardo Ochoa Chaparro
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/131793/eyJpZENsdWIiOiAxNDI2Nn0=/eduardo-ochoa-chaparro"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">5</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">49</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/04_diego_emilio_sanchez_torres.jpg" alt="Diego Emilio Sanchez Torres" loading="lazy">
+
+            <div class="player-name">
+                Diego Emilio Sanchez Torres
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/138301/eyJpZENsdWIiOiAxNDI2Nn0=/diego-emilio-sanchez-torres"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">3</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">35</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/05_daniel_guadalupe_l_pez_valdez.jpg" alt="Daniel Guadalupe López Valdez" loading="lazy">
+
+            <div class="player-name">
+                Daniel Guadalupe López Valdez
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/98510/eyJpZENsdWIiOiAxNDI2MH0=/daniel-guadalupe-lopez-valdez"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">5</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">256</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">3</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/06_diego_emmanuel_martinez_rodriguez.jpg" alt="Diego Emmanuel Martinez Rodriguez" loading="lazy">
+
+            <div class="player-name">
+                Diego Emmanuel Martinez Rodriguez
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/150466/eyJpZENsdWIiOiAxMTc4MH0=/diego-emmanuel-martinez-rodriguez"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">4</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">170</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/07_aldieri_josue_valenzuela_garcia.jpg" alt="Aldieri Josue Valenzuela Garcia" loading="lazy">
+
+            <div class="player-name">
+                Aldieri Josue Valenzuela Garcia
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/152775/eyJpZENsdWIiOiAxNDI5NX0=/aldieri-josue-valenzuela-garcia"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/08_luis_ernesto_ruiz_bustillos.jpg" alt="Luis Ernesto Ruiz Bustillos" loading="lazy">
+
+            <div class="player-name">
+                Luis Ernesto Ruiz Bustillos
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/127040/eyJpZENsdWIiOiAxMjU4NH0=/luis-ernesto-ruiz-bustillos"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">4</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">236</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">3</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">2</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/09_ngel_iv_n_ram_rez_molina.jpg" alt="Ángel Iván Ramírez Molina" loading="lazy">
+
+            <div class="player-name">
+                Ángel Iván Ramírez Molina
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/162872"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">72</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/10_daniel_vazquez_contreras.jpg" alt="Daniel Vazquez Contreras" loading="lazy">
+
+            <div class="player-name">
+                Daniel Vazquez Contreras
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/141261/daniel-vazquez-contreras"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">90</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/11_juan_alejandro_martinez_valdez.jpg" alt="Juan Alejandro Martinez Valdez" loading="lazy">
+
+            <div class="player-name">
+                Juan Alejandro Martinez Valdez
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/131486/juan-alejandro-martinez-valdez"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">83</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/12_diego_armando_araujo_de_la_luz.jpg" alt="Diego Armando Araujo De La Luz" loading="lazy">
+
+            <div class="player-name">
+                Diego Armando Araujo De La Luz
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligabbvaexpansion.mx/cancha/jugador/132477"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats">
+            
+            <div class="stat">
+                <div class="stat-label">JJ</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">MJ</div>
+                <div class="stat-value">90</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">JT</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">G</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">AG</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TA</div>
+                <div class="stat-value">1</div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">TR</div>
+                <div class="stat-value">0</div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+    </main>
+
+</section>
+
+
+<section
+    id="otros"
+    class="panel">
+
+    <div class="section-label">
+        Liga MX · Sofascore
+    </div>
+
+    <main class="grid">
+        
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/21_diogo_osmar_bagui_tobar.jpg" alt="Diogo Osmar Bagui Tobar" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    LIGA MX
+                </div>
+
+                <div class="player-name">
+                    Diogo Osmar Bagui Tobar
+                </div>
+
+                <div class="competition">
+                    Apertura 2026 · 2026/2027
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligamx.net/cancha/jugador/190940/eyJpZENsdWIiOiAxNDI1N30=/diogo-osmar-bagui-tobar"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    JJ
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MJ
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    JT
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    G
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AG
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TA
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TR
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/22_octavio_mart_n_v_zquez_gonz_lez.jpg" alt="Octavio Martín Vázquez González" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    LIGA MX
+                </div>
+
+                <div class="player-name">
+                    Octavio Martín Vázquez González
+                </div>
+
+                <div class="competition">
+                    Apertura 2026 · 2026/2027
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligamx.net/cancha/jugador/139137/eyJpZENsdWIiOiAxNDI1N30=/octavio-martin-vazquez-gonzalez"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    JJ
+                </div>
+                <div class="stat-value">
+                    3
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MJ
+                </div>
+                <div class="stat-value">
+                    95
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    JT
+                </div>
+                <div class="stat-value">
+                    2
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    G
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AG
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TA
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TR
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/23_jhojan_esmaider_julio_palacios.jpg" alt="Jhojan Esmaider Julio Palacios" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    LIGA MX
+                </div>
+
+                <div class="player-name">
+                    Jhojan Esmaider Julio Palacios
+                </div>
+
+                <div class="competition">
+                    Apertura 2026 · 2026/2027
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligamx.net/cancha/jugador/179375/eyJpZENsdWIiOiAxNDI1N30=/jhojan-esmaider-julio-palacios"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    JJ
+                </div>
+                <div class="stat-value">
+                    6
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MJ
+                </div>
+                <div class="stat-value">
+                    531
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    JT
+                </div>
+                <div class="stat-value">
+                    6
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    G
+                </div>
+                <div class="stat-value">
+                    1
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AG
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TA
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TR
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/24_ezequiel_eduardo_bullaude.jpg" alt="Ezequiel Eduardo Bullaude" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    LIGA MX
+                </div>
+
+                <div class="player-name">
+                    Ezequiel Eduardo Bullaude
+                </div>
+
+                <div class="competition">
+                    Apertura 2026 · 2026/2027
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.ligamx.net/cancha/jugador/187398/eyJpZENsdWIiOiAxNDEwMn0=/ezequiel-eduardo-bullaude"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    JJ
+                </div>
+                <div class="stat-value">
+                    6
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MJ
+                </div>
+                <div class="stat-value">
+                    511
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    JT
+                </div>
+                <div class="stat-value">
+                    6
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    G
+                </div>
+                <div class="stat-value">
+                    1
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AG
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TA
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    TR
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/21_nicol_s_d_az.jpg" alt="Nicolás Díaz" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    SOFASCORE
+                </div>
+
+                <div class="player-name">
+                    Nicolás Díaz
+                </div>
+
+                <div class="competition">
+                    Liga 1 Te Apuesto
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.sofascore.com/es/football/player/nicolas-diaz/924530#tab:career"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    MP
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MIN
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    GLS
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AST
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/22_vitinho.jpg" alt="Vitinho" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    SOFASCORE
+                </div>
+
+                <div class="player-name">
+                    Vitinho
+                </div>
+
+                <div class="competition">
+                    Brasileirão Série B · Copa Betano do Brasil · Copa do Nordeste · Cearense
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.sofascore.com/es/football/player/vitinho/1066721#tab:career"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    MP
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MIN
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    GLS
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AST
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/23_domingo_blanco.jpg" alt="Domingo Blanco" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    SOFASCORE
+                </div>
+
+                <div class="player-name">
+                    Domingo Blanco
+                </div>
+
+                <div class="competition">
+                    Liga Profesional de Fútbol · Copa Argentina
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.sofascore.com/es/football/player/domingo-blanco/791140#tab:career"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    MP
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MIN
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    GLS
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AST
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+
+    <article class="card">
+
+        <div class="player-top">
+
+            <img class="foto" src="xolos_fotos/24_shamar_nicholson.jpg" alt="Shamar Nicholson" loading="lazy">
+
+            <div>
+                <div class="source-badge">
+                    SOFASCORE
+                </div>
+
+                <div class="player-name">
+                    Shamar Nicholson
+                </div>
+
+                <div class="competition">
+                    Vysshaya Liga
+                </div>
+            </div>
+
+            <a class="open-link"
+               href="https://www.sofascore.com/es/football/player/shamar-nicholson/884948#tab:career"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+
+        </div>
+
+        <div class="stats stats-secondary">
+            
+            <div class="stat">
+                <div class="stat-label">
+                    MP
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    MIN
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    GLS
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+            <div class="stat">
+                <div class="stat-label">
+                    AST
+                </div>
+                <div class="stat-value">
+                    0
+                </div>
+            </div>
+        
+        </div>
+
+    </article>
+    
+    </main>
+
+</section>
+
+
+<footer class="footer">
+
+    <div>
+        <strong>JJ</strong> Juegos Jugados
+        ·
+        <strong>MJ</strong> Minutos Jugados
+        ·
+        <strong>JT</strong> Juegos como Titular
+        ·
+        <strong>G</strong> Goles
+        ·
+        <strong>AG</strong> Asistencias
+        ·
+        <strong>TA</strong> Tarjetas Amarillas
+        ·
+        <strong>TR</strong> Tarjetas Rojas
+    </div>
+
+    <div>
+        En Sofascore:
+        <strong>MP</strong> Partidos
+        ·
+        <strong>MIN</strong> Minutos
+        ·
+        <strong>GLS</strong> Goles
+        ·
+        <strong>AST</strong> Asistencias
+    </div>
+
+    <div>
+        Datos obtenidos de Liga MX / Liga BBVA Expansión MX / Sofascore
+    </div>
+
+</footer>
+
+</div>
+
+
+<script>
+
+function mostrarPestana(id, boton) {
+
+    document
+        .querySelectorAll(".panel")
+        .forEach(function(panel) {
+            panel.classList.remove("active");
+        });
+
+    document
+        .querySelectorAll(".tab")
+        .forEach(function(tab) {
+            tab.classList.remove("active");
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+    boton.classList.add("active");
+}
+
+</script>
+
+</body>
+
+</html>
