@@ -1765,10 +1765,11 @@ def obtener_estadisticas_sofascore_manual(jugador):
 
 # Alias conservado para no tener que modificar el resto del dashboard.
 SOFASCORE_MANUAL = {
-    "Nicolas Diaz": {"MP": 0, "MIN": 0, "GLS": 0, "AST": 0},
-    "Vitinho": {"MP": 0, "MIN": 0, "GLS": 0, "AST": 0},
-    "Domingo Blanco": {"MP": 0, "MIN": 0, "GLS": 0, "AST": 0},
-    "Shamar Nicholson": {"MP": 0, "MIN": 0, "GLS": 0, "AST": 0},
+    "Nicolas Diaz": {"MP": 4, "MIN": 261, "GLS": 0, "AST": 0},
+    "Vitinho": {"MP": 35, "MIN": 1850, "GLS": 10, "AST": 1},
+    "Domingo Blanco": {"MP": 7, "MIN": 218, "GLS": 0, "AST": 0},
+    "Shamar Nicholson": {"MP": 13, "MIN": 451, "GLS": 0, "AST": 1},
+}
 }
 
 
