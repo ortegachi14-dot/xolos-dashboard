@@ -1768,6 +1768,7 @@ SOFASCORE_MANUAL = {
     "Vitinho": {"MP": 35, "MIN": 1850, "GLS": 10, "AST": 1},
     "Domingo Blanco": {"MP": 7, "MIN": 218, "GLS": 0, "AST": 0},
     "Shamar Nicholson": {"MP": 13, "MIN": 451, "GLS": 0, "AST": 1},
+    
 }
 
 
