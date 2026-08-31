@@ -2536,48 +2536,48 @@ def main():
     print("-" * 60)
 
     for indice, jugador in enumerate(
-        JUGADORES_SEGUNDO_GRUPO_LIGAMX,
-        start=1
-    ):
+    JUGADORES_SEGUNDO_GRUPO_LIGAMX,
+    start=1
+):
 
-        resultado = obtener_jugador(
-            jugador,
-            20 + indice,
-            carpeta_fotos
-        )
+    resultado = obtener_jugador(
+        jugador,
+        20 + indice,
+        carpeta_fotos
+    )
 
-      # Sumar Leagues Cup 2026 solo a los 4 jugadores correspondientes.
-clave_jugador = clave_sofascore_manual(
-    jugador.get("nombre", "")
-)
+    # Sumar Leagues Cup 2026 solo a los 4 jugadores correspondientes.
+    clave_jugador = clave_sofascore_manual(
+        jugador.get("nombre", "")
+    )
 
-clave_leagues_cup = next(
-    (
-        nombre_manual
-        for nombre_manual in LEAGUES_CUP_MANUAL
-        if clave_sofascore_manual(nombre_manual) == clave_jugador
-    ),
-    None
-)
+    clave_leagues_cup = next(
+        (
+            nombre_manual
+            for nombre_manual in LEAGUES_CUP_MANUAL
+            if clave_sofascore_manual(nombre_manual) == clave_jugador
+        ),
+        None
+    )
 
-if clave_leagues_cup is not None:
-    for estadistica in ESTADISTICAS:
-        resultado["estadisticas"][estadistica] += (
-            LEAGUES_CUP_MANUAL[clave_leagues_cup].get(
-                estadistica,
-                0
+    if clave_leagues_cup is not None:
+        for estadistica in ESTADISTICAS:
+            resultado["estadisticas"][estadistica] += (
+                LEAGUES_CUP_MANUAL[clave_leagues_cup].get(
+                    estadistica,
+                    0
+                )
             )
-        )
-        resultado["fuente"] = "LIGA MX"
-        resultado["tipo"] = "ligamx"
-        resultado["competencia"] = (
-            "Apertura 2026 · 2026/2027"
-        )
 
-        resultados_segundo.append(
-            resultado
-        )
+    resultado["fuente"] = "LIGA MX"
+    resultado["tipo"] = "ligamx"
+    resultado["competencia"] = (
+        "Apertura 2026 · 2026/2027"
+    )
 
+    resultados_segundo.append(
+        resultado
+    )
         print()
 
     # --------------------------------------------------------
