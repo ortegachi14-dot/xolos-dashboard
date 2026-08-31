@@ -2546,20 +2546,28 @@ def main():
             carpeta_fotos
         )
 
-        # Sumar Leagues Cup 2026 solo a los 4 jugadores correspondientes.
-        clave_jugador = clave_sofascore_manual(
-            jugador.get("nombre", "")
+      # Sumar Leagues Cup 2026 solo a los 4 jugadores correspondientes.
+clave_jugador = clave_sofascore_manual(
+    jugador.get("nombre", "")
+)
+
+clave_leagues_cup = next(
+    (
+        nombre_manual
+        for nombre_manual in LEAGUES_CUP_MANUAL
+        if clave_sofascore_manual(nombre_manual) == clave_jugador
+    ),
+    None
+)
+
+if clave_leagues_cup is not None:
+    for estadistica in ESTADISTICAS:
+        resultado["estadisticas"][estadistica] += (
+            LEAGUES_CUP_MANUAL[clave_leagues_cup].get(
+                estadistica,
+                0
+            )
         )
-
-        if clave_jugador in LEAGUES_CUP_MANUAL:
-            for estadistica in ESTADISTICAS:
-                resultado["estadisticas"][estadistica] += (
-                    LEAGUES_CUP_MANUAL[clave_jugador].get(
-                        estadistica,
-                        0
-                    )
-                )
-
         resultado["fuente"] = "LIGA MX"
         resultado["tipo"] = "ligamx"
         resultado["competencia"] = (
