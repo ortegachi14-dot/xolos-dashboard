@@ -182,6 +182,59 @@ SOFA_ESTADISTICAS = ["MP", "MIN", "GLS", "AST"]
 
 ESTADISTICAS = ["JJ", "MJ", "JT", "G", "AG", "TA", "TR"]
 
+# ============================================================
+# LEAGUES CUP 2026 — ESTADÍSTICA HISTÓRICA FIJA
+# ============================================================
+#
+# Estos datos corresponden exclusivamente a Leagues Cup.
+# El torneo ya terminó para estos jugadores, por lo que estos
+# valores NO se actualizan semanalmente.
+#
+# Se suman a las estadísticas acumuladas de la temporada.
+#
+# ============================================================
+
+LEAGUES_CUP_MANUAL = {
+    "Jhojan Esmaider Julio Palacios": {
+        "JJ": 3,
+        "MJ": 266,
+        "JT": 3,
+        "G": 1,
+        "AG": 0,
+        "TA": 0,
+        "TR": 0,
+    },
+
+    "Octavio Martín Vázquez González": {
+        "JJ": 1,
+        "MJ": 12,
+        "JT": 0,
+        "G": 0,
+        "AG": 0,
+        "TA": 0,
+        "TR": 0,
+    },
+
+    "Diogo Osmar Bagui Tobar": {
+        "JJ": 3,
+        "MJ": 195,
+        "JT": 2,
+        "G": 0,
+        "AG": 0,
+        "TA": 0,
+        "TR": 0,
+    },
+
+    "Ezequiel Eduardo Bullaude": {
+        "JJ": 3,
+        "MJ": 170,
+        "JT": 1,
+        "G": 2,
+        "AG": 0,
+        "TA": 1,
+        "TR": 0,
+    },
+}
 # Fondo solicitado por el usuario.
 BACKGROUND_URL = (
     "https://upload.wikimedia.org/wikipedia/commons/7/7f/"
@@ -2492,6 +2545,20 @@ def main():
             20 + indice,
             carpeta_fotos
         )
+
+    # Sumar Leagues Cup 2026 solo a los 4 jugadores correspondientes.
+    clave_jugador = clave_sofascore_manual(
+        jugador.get("nombre", "")
+    )
+
+    if clave_jugador in LEAGUES_CUP_MANUAL:
+        for estadistica in ESTADISTICAS:
+            resultado["estadisticas"][estadistica] += (
+                LEAGUES_CUP_MANUAL[clave_jugador].get(
+                    estadistica,
+                    0
+                )
+            )
 
         resultado["fuente"] = "LIGA MX"
         resultado["tipo"] = "ligamx"
