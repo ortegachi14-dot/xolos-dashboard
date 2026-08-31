@@ -40,7 +40,7 @@ JUGADORES = [
     },
     {
         "nombre": "Ramón Eligio Palomares Verdugo",
-        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/125435/eyJpZENsdWIiOiAxNDI2Nn0=/ramon-eligio-palomares-verdugo",
+        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/125435/ramon-eligio-palomares-verdugo",
     },
     {
         "nombre": "Eduardo Ochoa Chaparro",
