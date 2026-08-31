@@ -2535,16 +2535,16 @@ def main():
     print("SEGUNDO GRUPO — LIGA MX")
     print("-" * 60)
 
-    for indice, jugador in enumerate(
-        JUGADORES_SEGUNDO_GRUPO_LIGAMX,
-        start=1
-    ):
+   for indice, jugador in enumerate(
+    JUGADORES_SEGUNDO_GRUPO_LIGAMX,
+    start=1
+):
 
-        resultado = obtener_jugador(
-            jugador,
-            20 + indice,
-            carpeta_fotos
-        )
+    resultado = obtener_jugador(
+        jugador,
+        20 + indice,
+        carpeta_fotos
+    )
 
     # Sumar Leagues Cup 2026 solo a los 4 jugadores correspondientes.
     clave_jugador = clave_sofascore_manual(
@@ -2560,17 +2560,17 @@ def main():
                 )
             )
 
-        resultado["fuente"] = "LIGA MX"
-        resultado["tipo"] = "ligamx"
-        resultado["competencia"] = (
-            "Apertura 2026 · 2026/2027"
-        )
+    resultado["fuente"] = "LIGA MX"
+    resultado["tipo"] = "ligamx"
+    resultado["competencia"] = (
+        "Apertura 2026 · 2026/2027"
+    )
 
-        resultados_segundo.append(
-            resultado
-        )
+    resultados_segundo.append(
+        resultado
+    )
 
-        print()
+    print()
 
     # --------------------------------------------------------
     # SEGUNDO GRUPO — SOFASCORE
