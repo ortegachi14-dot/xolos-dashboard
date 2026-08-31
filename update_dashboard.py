@@ -36,7 +36,7 @@ import time
 JUGADORES = [
     {
         "nombre": "Jesús Hernández Moreno",
-        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/124277/eyJpZENsdWIiOiAxMjA1OH0=/jesus-hernandez-moreno",
+        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/124277/jesus-hernandez-moreno",
     },
     {
         "nombre": "Ramón Eligio Palomares Verdugo",
