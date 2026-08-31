@@ -2535,9 +2535,9 @@ def main():
     print("SEGUNDO GRUPO — LIGA MX")
     print("-" * 60)
 
- for indice, jugador in enumerate(
-    JUGADORES_SEGUNDO_GRUPO_LIGAMX,
-    start=1
+    for indice, jugador in enumerate(
+        JUGADORES_SEGUNDO_GRUPO_LIGAMX,
+        start=1
 ):
 
     resultado = obtener_jugador(
