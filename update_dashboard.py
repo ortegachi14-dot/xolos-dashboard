@@ -36,11 +36,11 @@ import time
 JUGADORES = [
     {
         "nombre": "Jesús Hernández Moreno",
-        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/124277/jesus-hernandez-moreno",
+        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/124277/eyJpZENsdWIiOiAxNDI2Nn0=/jesus-hernandez-moreno",
     },
     {
         "nombre": "Ramón Eligio Palomares Verdugo",
-        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/125435/ramon-eligio-palomares-verdugo",
+        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/125435/eyJpZENsdWIiOiAxNDI2Nn0=/ramon-eligio-palomares-verdugo",
     },
     {
         "nombre": "Eduardo Ochoa Chaparro",
@@ -73,10 +73,6 @@ JUGADORES = [
     {
         "nombre": "Daniel Vazquez Contreras",
         "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/141261/daniel-vazquez-contreras",
-    },
-    {
-        "nombre": "Juan Alejandro Martinez Valdez",
-        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/131486/juan-alejandro-martinez-valdez",
     },
     {
         "nombre": "Diego Armando Araujo De La Luz",
