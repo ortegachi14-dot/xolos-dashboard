@@ -97,12 +97,11 @@ JUGADORES_SEGUNDO_GRUPO_LIGAMX = [
     {
         "nombre": "Octavio Martín Vázquez González",
         "url": "https://www.ligamx.net/cancha/jugador/139137/eyJpZENsdWIiOiAxNDI1N30=/octavio-martin-vazquez-gonzalez",
-        "fuente": "LIGA MX",
+        
     },
     {
         "nombre": "Jhojan Esmaider Julio Palacios",
         "url": "https://www.ligamx.net/cancha/jugador/179375/eyJpZENsdWIiOiAxNDI1N30=/jhojan-esmaider-julio-palacios",
-        "fuente": "LIGA MX",
     },
     {
         "nombre": "Ezequiel Eduardo Bullaude",
