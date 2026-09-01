@@ -2562,12 +2562,13 @@ def main():
     
         if clave_leagues_cup is not None:
             for estadistica in ESTADISTICAS:
-                resultado["estadisticas"][estadistica] += (
-                    LEAGUES_CUP_MANUAL[clave_leagues_cup].get(
+               resultado["estadisticas"][estadistica] = (
+                    int(resultado["estadisticas"].get(estadistica, 0))
+                    + LEAGUES_CUP_MANUAL[clave_leagues_cup].get(
                         estadistica,
                         0
-                    )
-                )
+    )
+)
     
         resultado["fuente"] = "LIGA MX"
         resultado["tipo"] = "ligamx"
