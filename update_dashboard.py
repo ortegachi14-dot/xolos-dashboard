@@ -2354,14 +2354,14 @@ body {{
 
     <button
         class="tab active"
-        onclick="mostrarPestana('expansion', this)">
-        EXPANSIÓN / PREMIER
+        onclick="mostrarPestana('otros', this)">
+        JUGADORES PRIMERA
     </button>
 
-    <button
+     <button
         class="tab"
-        onclick="mostrarPestana('otros', this)">
-        OTROS PRÉSTAMOS
+        onclick="mostrarPestana('expansion', this)">
+        LIGA DE EXPANSIÓN Y PREMIER
     </button>
 
 </nav>
@@ -2369,7 +2369,7 @@ body {{
 
 <section
     id="expansion"
-    class="panel active">
+    class="panel">
 
     <div class="section-label">
         Apertura 2026 · Liga Expansión MX / Liga Premier
@@ -2384,7 +2384,7 @@ body {{
 
 <section
     id="otros"
-    class="panel">
+    class="panel active">
 
     <div class="section-label">
         Liga MX · Sofascore
