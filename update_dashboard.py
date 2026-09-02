@@ -74,10 +74,6 @@ JUGADORES = [
         "nombre": "Daniel Vazquez Contreras",
         "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/141261/daniel-vazquez-contreras",
     },
-    {
-        "nombre": "Diego Armando Araujo De La Luz",
-        "url": "https://www.ligabbvaexpansion.mx/cancha/jugador/132477",
-    },
 ]
 
 
