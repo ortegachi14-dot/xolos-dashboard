@@ -1683,8 +1683,8 @@ def extraer_estadistica_jugador_de_lineup(
 
 SOFASCORE_MANUAL = {
     "Nicolas Diaz": {
-        "MP": 4,
-        "MIN": 261,
+        "MP": 5,
+        "MIN": 351,
         "GLS": 0,
         "AST": 0,
     },
