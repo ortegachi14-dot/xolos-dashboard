@@ -2370,16 +2370,16 @@ body {{
 }}
 
 /* Pantalla de acceso */
-.login-screen {
+.login-screen {{
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     background: #111111;
-}
+}}
 
-.login-card {
+.login-card {{
     width: 100%;
     max-width: 420px;
     padding: 32px;
@@ -2388,38 +2388,38 @@ body {{
     border-top: 5px solid #c8102e;
     border-radius: 12px;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
-}
+}}
 
-.login-kicker {
+.login-kicker {{
     margin-bottom: 10px;
     color: #c8102e;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-}
+}}
 
-.login-title {
+.login-title {{
     margin: 0 0 8px;
     color: #ffffff;
     font-size: 28px;
-}
+}}
 
-.login-subtitle {
+.login-subtitle {{
     margin: 0 0 24px;
     color: #aaaaaa;
     font-size: 14px;
-}
+}}
 
-.login-label {
+.login-label {{
     display: block;
     margin: 16px 0 7px;
     color: #dddddd;
     font-size: 13px;
     font-weight: 600;
-}
+}}
 
-.login-input {
+.login-input {{
     width: 100%;
     box-sizing: border-box;
     padding: 12px;
@@ -2428,14 +2428,14 @@ body {{
     border: 1px solid #555555;
     border-radius: 6px;
     font-size: 15px;
-}
+}}
 
-.login-input:focus {
+.login-input:focus {{
     outline: none;
     border-color: #c8102e;
-}
+}}
 
-.login-button {
+.login-button {{
     width: 100%;
     margin-top: 24px;
     padding: 13px;
@@ -2446,27 +2446,29 @@ body {{
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-}
+}}
 
-.login-button:hover {
+.login-button:hover {{
     background: #a80d26;
-}
+}}
 
-.login-button:disabled {
+.login-button:disabled {{
     opacity: 0.6;
     cursor: wait;
-}
+}}
 
-.login-message {
+.login-message {{
     min-height: 20px;
     margin-top: 16px;
     color: #ffb3b3;
     font-size: 13px;
-}
+}}
 
-.login-screen.hidden {
+.login-screen.hidden {{
     display: none;
-}
+}}
+
+</style>
 
 </style>
 
