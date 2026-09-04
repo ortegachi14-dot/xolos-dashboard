@@ -2625,20 +2625,20 @@ function mostrarPestana(id, boton) {{
     src="//gc.zgo.at/count.js">
 </script>    
 <script>
-    async function iniciarAcceso() {
+    async function iniciarAcceso() {{
         const loginScreen = document.getElementById("login-screen");
         const loginForm = document.getElementById("login-form");
         const loginButton = document.getElementById("login-button");
         const loginMessage = document.getElementById("login-message");
 
-        const { data: { session } } =
+        const {{ data: {{ session }} }} =
             await supabaseClient.auth.getSession();
 
-        if (session) {
+        if (session) {{
             loginScreen.classList.add("hidden");
-        }
+        }}
 
-        loginForm.addEventListener("submit", async function(event) {
+        loginForm.addEventListener("submit", async function(event) {{
             event.preventDefault();
 
             loginButton.disabled = true;
@@ -2651,40 +2651,39 @@ function mostrarPestana(id, boton) {{
             const password =
                 document.getElementById("login-password").value;
 
-            const { error } =
-                await supabaseClient.auth.signInWithPassword({
+            const {{ error }} =
+                await supabaseClient.auth.signInWithPassword({{
                     email: email,
                     password: password
-                });
+                }});
 
-            if (error) {
+            if (error) {{
                 loginMessage.textContent =
                     "Correo o contraseña incorrectos.";
 
                 loginButton.disabled = false;
                 loginButton.textContent = "Iniciar sesión";
                 return;
-            }
+            }}
 
             loginScreen.classList.add("hidden");
 
             loginButton.disabled = false;
             loginButton.textContent = "Iniciar sesión";
-        });
+        }});
 
         supabaseClient.auth.onAuthStateChange(
-            function(event, session) {
-                if (session) {
+            function(event, session) {{
+                if (session) {{
                     loginScreen.classList.add("hidden");
-                } else {
+                }} else {{
                     loginScreen.classList.remove("hidden");
-                }
-            }
+                }}
+            }}
         );
-    }
+    }}
 
     iniciarAcceso();
-    
 </script>
 
 </body>
