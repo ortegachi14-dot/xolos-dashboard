@@ -322,6 +322,21 @@ body {
 
 </style>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    const SUPABASE_URL = "https://blukemyhkdixnprqiinb.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_OjgpEEPVqB5JLT6Jb_Oabw_1Ce9NFep";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+</script>
+
 </head>
 
 <body>
