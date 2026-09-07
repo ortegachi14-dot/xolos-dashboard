@@ -1,0 +1,40 @@
+name: Probar Dashboard V2
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probar-v2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar Dashboard V2
+        run: |
+          python update_dashboard_v2.py
+
+      - name: Comprobar HTML generado
+        run: |
+          test -f index.html
+          echo "index.html generado correctamente"
+
+      - name: Guardar HTML de prueba
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-v2-html
+          path: index.html
