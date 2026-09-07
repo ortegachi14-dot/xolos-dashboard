@@ -1885,6 +1885,276 @@ def obtener_jugador_sofascore(jugador, indice, carpeta_fotos):
         "tipo": "sofascore",
     }
 
+def crear_ficha_jhojan():
+    return """
+    <section id="ficha-jhojan" class="player-ficha">
+
+        <div class="ficha-header">
+
+            <button
+                class="ficha-back"
+                onclick="mostrarDashboard()">
+                ← Volver al dashboard
+            </button>
+
+            <div class="ficha-source">
+                FICHA DE SEGUIMIENTO · XOLOS
+            </div>
+
+        </div>
+
+        <div class="ficha-hero">
+
+            <div class="ficha-photo">
+                <img
+                    src="xolos_fotos/jhojan_esmaider_julio_palacios.jpg"
+                    alt="Jhojan Esmaider Julio Palacios">
+            </div>
+
+            <div class="ficha-identity">
+
+                <div class="ficha-number">
+                    #7
+                </div>
+
+                <h1>
+                    Jhojan Esmaider Julio Palacios
+                </h1>
+
+                <p class="ficha-position">
+                    Delantero · NFM
+                </p>
+
+                <p class="ficha-club">
+                    Atlante · Liga MX
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="ficha-section">
+
+            <h2>INFORMACIÓN DEL JUGADOR</h2>
+
+            <div class="ficha-grid">
+
+                <div class="ficha-field">
+                    <span>Fecha de nacimiento</span>
+                    <strong>11/02/1998</strong>
+                </div>
+
+                <div class="ficha-field">
+                    <span>Nacionalidad</span>
+                    <strong>Ecuatoriana</strong>
+                </div>
+
+                <div class="ficha-field">
+                    <span>Altura</span>
+                    <strong>1.67 m</strong>
+                </div>
+
+                <div class="ficha-field">
+                    <span>Peso</span>
+                    <strong>66 kg</strong>
+                </div>
+
+                <div class="ficha-field">
+                    <span>Club de origen</span>
+                    <strong>Xoloitzcuintles</strong>
+                </div>
+
+                <div class="ficha-field">
+                    <span>Estatus</span>
+                    <strong>Préstamo</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="ficha-section">
+
+            <h2>ÚLTIMO PARTIDO</h2>
+
+            <div class="last-match">
+
+                <div>
+                    <span>Jornada 6 · Liga MX</span>
+                    <strong>Atlante 1 — 1 León</strong>
+                </div>
+
+                <div class="last-match-stats">
+                    <span>90 MIN</span>
+                    <span>0 G</span>
+                    <span>0 ASIS</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="ficha-section">
+
+            <h2>ESTADÍSTICAS ACUMULADAS</h2>
+
+            <div class="stats-title">
+                LIGA MX
+            </div>
+
+            <div class="stats stats-secondary">
+                <div class="stat">
+                    <div class="stat-label">JJ</div>
+                    <div class="stat-value">6</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">MJ</div>
+                    <div class="stat-value">531</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">JT</div>
+                    <div class="stat-value">6</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">G</div>
+                    <div class="stat-value">1</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">AG</div>
+                    <div class="stat-value">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">TA</div>
+                    <div class="stat-value">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">TR</div>
+                    <div class="stat-value">0</div>
+                </div>
+            </div>
+
+            <div class="stats-title">
+                LEAGUES CUP
+            </div>
+
+            <div class="stats stats-secondary">
+                <div class="stat">
+                    <div class="stat-label">JJ</div>
+                    <div class="stat-value">3</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">MJ</div>
+                    <div class="stat-value">263</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">JT</div>
+                    <div class="stat-value">3</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">G</div>
+                    <div class="stat-value">1</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">AG</div>
+                    <div class="stat-value">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">TA</div>
+                    <div class="stat-value">1</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">TR</div>
+                    <div class="stat-value">0</div>
+                </div>
+            </div>
+
+            <div class="stats-title stats-total-title">
+                TOTAL INTEGRADO
+            </div>
+
+            <div class="stats stats-secondary stats-total">
+                <div class="stat">
+                    <div class="stat-label">JJ</div>
+                    <div class="stat-value">9</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">MJ</div>
+                    <div class="stat-value">794</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">JT</div>
+                    <div class="stat-value">9</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">G</div>
+                    <div class="stat-value">2</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">AG</div>
+                    <div class="stat-value">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">TA</div>
+                    <div class="stat-value">1</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">TR</div>
+                    <div class="stat-value">0</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ficha-section">
+
+            <h2>EVALUACIÓN HISTÓRICA</h2>
+
+            <div class="evaluation-card">
+                <div class="evaluation-header">
+                    <strong>9.0</strong>
+                    <span>04/09/2026 · Christian Ortega</span>
+                </div>
+
+                <p>
+                    Es un jugador que se desempeña mejor como 2do delantero
+                    que como un jugador por los carriles laterales.
+                </p>
+            </div>
+
+            <div class="evaluation-card">
+                <div class="evaluation-header">
+                    <strong>8.0</strong>
+                    <span>04/09/2026 · Christian</span>
+                </div>
+
+                <p>
+                    Es el generador de futbol a la ofensiva, cada que recibe
+                    balón el equipo se proyecta al ataque, ayuda defensivamente.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+    """
 
 def crear_tarjeta_segundo_grupo(jugador):
     nombre = html.escape(
@@ -1895,6 +2165,25 @@ def crear_tarjeta_segundo_grupo(jugador):
         jugador["url"]
     )
 
+    if jugador.get("nombre") == "Jhojan Esmaider Julio Palacios":
+        enlace_ficha = """
+            <button
+                class="open-link ficha-button"
+                type="button"
+                onclick="mostrarFichaJhojan()">
+                VER FICHA
+            </button>
+        """
+    else:
+        enlace_ficha = f"""
+            <a class="open-link"
+               href="{url}"
+               target="_blank"
+               title="Abrir ficha">
+                ↗
+            </a>
+        """
+        
     if jugador.get("foto"):
         foto = html.escape(
             "xolos_fotos/" + jugador["foto"]
@@ -1975,12 +2264,7 @@ def crear_tarjeta_segundo_grupo(jugador):
                 </div>
             </div>
 
-            <a class="open-link"
-               href="{url}"
-               target="_blank"
-               title="Abrir ficha">
-                ↗
-            </a>
+            {enlace_ficha}
 
         </div>
 
@@ -1991,13 +2275,11 @@ def crear_tarjeta_segundo_grupo(jugador):
     </article>
     """
 
-
-
-
 def crear_dashboard_con_pestanas(
     tarjetas_primer_grupo,
     tarjetas_segundo_grupo
 ):
+        
     return f"""<!DOCTYPE html>
 
 <html lang="es">
@@ -2445,9 +2727,43 @@ body {{
 
 </div>
 
+<div id="ficha-container" style="display: none;">
+
+    {crear_ficha_jhojan()}
+
+</div>
+
 
 <script>
 
+        function mostrarFichaJhojan() {{
+            document.querySelectorAll(".panel").forEach(function(panel) {{
+                panel.classList.remove("active");
+            }});
+
+            document.querySelectorAll(".tab").forEach(function(tab) {{
+                tab.classList.remove("active");
+            }});
+
+            document.getElementById("ficha-container").style.display = "block";
+        }}
+
+        function mostrarDashboard() {{
+            document.getElementById("ficha-container").style.display = "none";
+
+            document.querySelectorAll(".panel").forEach(function(panel) {{
+                panel.classList.remove("active");
+            }});
+
+            document.getElementById("otros").classList.add("active");
+
+            document.querySelectorAll(".tab").forEach(function(tab) {{
+                tab.classList.remove("active");
+            }});
+
+            document.querySelector(".tab").classList.add("active");
+        }}
+        
 function mostrarPestana(id, boton) {{
 
     document
